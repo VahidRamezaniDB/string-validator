@@ -13,6 +13,13 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Vertex {
     boolean isTerminal;
-    List<Edge> incomingEdges;
     List<Edge> outgoingEdges;
+
+    public Vertex process(char ch) {
+        return outgoingEdges.stream()
+                .filter(edge -> edge.accepts(ch))
+                .findFirst()
+                .orElseThrow(RuntimeException::new)
+                .getNext();
+    }
 }

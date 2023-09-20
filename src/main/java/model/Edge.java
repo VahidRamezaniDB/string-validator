@@ -10,6 +10,10 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Edge {
-    String accepts;
+    char validChar;
     Vertex next;
+
+    public boolean accepts(char ch) {
+        return validChar == ch;
+    }
 }
